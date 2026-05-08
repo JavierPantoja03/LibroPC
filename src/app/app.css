@@ -1,0 +1,133 @@
+/* ==========================================================================
+   CONFIGURACIÓN GLOBAL Y RESET DE SCROLL
+   ========================================================================== */
+html, body {
+  scroll-behavior: smooth !important;
+  /* Permitimos que el scroll fluya para que el tutorial pueda bajar */
+  overflow-x: hidden !important; 
+  height: auto !important; 
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   CONTENEDOR DE HERRAMIENTAS FLOTANTES (Bocina, Ayuda, Chat)
+   ========================================================================== */
+.contenedor-herramientas-flotantes {
+  position: fixed;
+  /* Espacio para el botón morado de Botpress abajo */
+  bottom: 90px; 
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    
+  gap: 15px;              
+  z-index: 99999; /* Por debajo de la ayuda pero por encima del libro */
+  width: 70px;
+}
+
+/* --- ESTILO PARA EL BOTÓN DE VOZ (Bocina) --- */
+.boton-voz-fijo {
+  width: 56px;
+  height: 56px;
+  background-color: #007bff; 
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.boton-voz-fijo:hover {
+  transform: scale(1.1);
+  background-color: #0056b3;
+}
+
+/* --- BOTÓN AYUDA (SIGNO ?) --- */
+.boton-tutorial-fijo {
+  background: transparent;
+  border: none;
+  width: 56px;  
+  height: 56px;
+  font-size: 4rem;
+  color: #ffc107;
+  cursor: pointer;
+  animation: titilarGlow 2s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* Animación de titileo para llamar la atención */
+@keyframes titilarGlow {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(255, 193, 7, 0.4)); 
+  }
+  50% { 
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.9)); 
+  }
+}
+
+/* ==========================================================================
+   CORRECCIÓN PARA DRIVER.JS (Ayuda Visual)
+   ========================================================================== */
+
+/* Aseguramos que el recuadro de texto esté por encima de TODO */
+.driver-popover {
+  z-index: 2000000 !important; 
+  background-color: #ffffff !important;
+  color: #212529 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+/* El fondo oscuro del tutorial */
+.driver-overlay {
+  z-index: 1500000 !important;
+}
+
+/* Resaltado del elemento activo */
+.driver-active-element {
+  transition: all 0.4s ease-in-out !important;
+  z-index: 1600000 !important;
+  outline: 4px solid #ffc107 !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   VISIBILIDAD BOTPRESS
+   ========================================================================== */
+.bpw-layout {
+  z-index: 1000000 !important; 
+}
+
+/* ==========================================================================
+   AJUSTE PARA DISPOSITIVOS MÓVILES
+   ========================================================================== */
+@media (max-width: 768px) {
+  .contenedor-herramientas-flotantes {
+    bottom: 80px;
+    right: 15px;
+    gap: 10px;
+  }
+  
+  .boton-voz-fijo {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+
+  .boton-tutorial-fijo {
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,203 @@
+<!-- 0. BANNER DE VIDEO INTRODUCTORIO 🎬 -->
+<div class="video-intro-overlay" *ngIf="mostrarVideoIntro">
+  <div class="video-banner-container shadow-lg">
+    <video #introVideo class="main-intro-video" (ended)="finalizarVideo()" playsinline>
+      <source src="assets/video/videointro.mp4" type="video/mp4">
+      Tu navegador no soporta videos.
+    </video>
+    
+    <!-- Controles del Banner -->
+    <div class="video-controls-overlay">
+      <button (click)="reproducirVideo()" class="control-btn" *ngIf="!videoReproduciendo">
+        <i class="bi bi-play-fill"></i> REPRODUCIR INTRO
+      </button>
+      <div class="spacer" *ngIf="videoReproduciendo"></div>
+      <button (click)="finalizarVideo()" class="skip-btn">
+        SALTAR VIDEO <i class="bi bi-chevron-double-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 1. ANUNCIO DE BIENVENIDA 👋 -->
+<div class="welcome-overlay animate__animated animate__fadeIn" *ngIf="mostrarBienvenida">
+  <div class="welcome-card shadow-lg animate__animated animate__backInDown">
+    <div class="welcome-header">
+      <div class="welcome-icon">👋</div>
+      <h2 class="fw-bold mt-2 text-white">¡Bienvenido(a) Explorador(a)!</h2>
+    </div>
+    
+    <div class="welcome-body p-4 text-center">
+      <p class="fs-5 text-dark">
+        Estás por iniciar un viaje increíble en este libro de aprendizaje sobre 
+        <strong>Pensamiento Computacional</strong>.
+      </p>
+      
+      <div class="ayuda-instruccion p-3 rounded-4 mt-3">
+        <p class="mb-2 fw-bold text-primary">
+          💡 Para aprender cómo usar este libro, primero <strong>cierra este anuncio</strong> 
+          en el botón de abajo.
+        </p>
+        <p class="mb-0 text-dark" style="font-size: 0.9rem;">
+          Luego, haz clic en el botón de ayuda <span class="help-btn-mini">?</span> 
+          que verás en la esquina de la pantalla.
+        </p>
+      </div>
+
+      <button (click)="cerrarBienvenida()" class="btn-comenzar shadow">
+        ¡ENTENDIDO, CERRAR ANUNCIO! 🚀
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 2. ESCENA DEL LIBRO Y PORTADA -->
+<div class="book-scene">
+  <div id="book-container" class="book-container" [class.opened]="isOpened">
+    <!-- Páginas internas (se muestran al abrir) -->
+    <div id="book-pages" class="book-pages"></div> 
+    
+    <!-- Tapa del Libro -->
+    <div id="book-cover" class="book-cover shadow-lg">
+      <!-- El Lomo/Spine -->
+      <div class="spine"></div>
+      
+      <div class="cover-content">
+        <!-- Franja Superior con Logos Institucionales -->
+        <div class="white-strip top-strip">
+          <div class="logos-container">
+            <img src="assets/img/logo-udenar.png" alt="Universidad de Nariño" class="inst-logo logo-udenar">
+            <img src="assets/img/logo-informatica.png" alt="Licenciatura en Informática" class="inst-logo">
+            <img src="assets/img/logo-goretti.png" alt="I.E.M. María Goretti" class="inst-logo">
+          </div>
+        </div>
+
+        <div class="middle-content">
+          <!-- Botones laterales tipo Sticker -->
+          <button id="btn-metadatos" class="btn-metadatos" (click)="toggleMetadatos()" title="Ver Metadatos del OVA">
+            <i class="bi bi-info-circle-fill"></i>
+            <span>Metadatos</span>
+          </button>
+
+          <a id="btn-manual"
+             href="assets/pdf/manual-de-usuario.pdf" 
+             target="_blank" 
+             class="btn-manual" 
+             title="Ver Manual de Usuario">
+            <i class="bi bi-file-earmark-text"></i>
+            <span>Manual de usuario</span>
+          </a>
+
+          <!-- Video Saludo Circular (Niña Goretti) -->
+          <div id="video-saludo-container" class="character-circle">
+            <video #videoSaludo 
+                    class="girl-video" 
+                    autoplay 
+                    loop 
+                    muted 
+                    [muted]="true" 
+                    playsinline 
+                    webkit-playsinline 
+                    poster="assets/img/nina-goretti.png">
+              <source src="assets/video/nina-saludo.mp4" type="video/mp4">
+              <img src="assets/img/nina-goretti.png" alt="Estudiante Goretti" class="girl-img">
+            </video>
+          </div>
+
+          <!-- Títulos del Ambiente de Aprendizaje -->
+          <div id="titulo-principal" class="titles-box">
+            <h1 class="main-title">AMBIENTES DE APRENDIZAJE</h1>
+            <h2 class="sub-title">PARA DESARROLLAR EL PENSAMIENTO COMPUTACIONAL</h2>
+          </div>
+
+          <div class="notebook-label">CUADERNO DE ACTIVIDADES</div>
+
+          <!-- Información de Autores y Créditos -->
+          <div class="authors-info">
+            <p><strong>Área:</strong> Tecnología e Informática</p>
+            <p><strong>Autores:</strong> Angela Valeria Castro & Javier Francisco Pantoja</p>
+            <p class="advisor-text"><strong>Asesor:</strong> John Jairo Domínguez de la Rosa</p>
+            <p class="advisor-text"><strong>Co-asesor:</strong> Miguel Ángel Vargas Hernández</p>
+            <p class="city-text">San Juan de Pasto</p>
+          </div>
+
+          <!-- Botón Principal de Acción -->
+          <button id="btn-abrir" (click)="abrirLibro()" class="start-btn">
+            ABRIR LIBRO
+          </button>
+        </div>
+
+        <!-- Franja Inferior con Licencia Creative Commons -->
+        <div class="white-strip bottom-strip-license">
+          <div class="license-box">
+            <img src="assets/img/creativecommons.png" alt="CC BY-NC-SA" class="cc-icon">
+            <span class="license-text">
+              Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. MODAL DE METADATOS DEL TRABAJO DE GRADO -->
+  <div class="metadata-overlay" *ngIf="mostrarMetadatos" (click)="mostrarMetadatos = false">
+    <div class="metadata-card" (click)="$event.stopPropagation()">
+      <div class="metadata-header">
+        <h3><i class="bi bi-book-half me-2"></i>Metadatos del Trabajo de Grado</h3>
+        <button class="close-btn" (click)="mostrarMetadatos = false">&times;</button>
+      </div>
+      
+      <div class="metadata-body">
+        <div class="meta-section shadow-sm">
+          <h5 class="section-title"><i class="bi bi-search text-primary"></i> Identificación del Proyecto</h5>
+          <div class="meta-item">
+            <small>Título</small>
+            <p class="fw-bold">Ambientes de Aprendizaje para contribuir a la resolución de problemas, aplicando el enfoque tripartita del pensamiento computacional.</p>
+          </div>
+          <div class="meta-item">
+            <small>Descripción</small>
+            <p class="text-muted">Recurso interactivo pedagógico diseñado para fortalecer las capacidades de resolución de problemas mediante las dimensiones del Pensamiento Computacional (conceptos, prácticas y perspectivas).</p>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="meta-section h-100 shadow-sm border-start-warning">
+              <h5 class="section-title"><i class="bi bi-mortarboard text-warning"></i> Enfoque Pedagógico</h5>
+              <div class="meta-subitem">
+                <i class="bi bi-cpu text-warning me-1"></i>
+                <span><strong>Área:</strong> Tecnología e Informática</span>
+              </div>
+              <div class="meta-subitem">
+                <i class="bi bi-people text-info me-1"></i>
+                <span><strong>Población:</strong> I.E.M. María Goretti (4°-5° y 7°-8°)</span>
+              </div>
+              <div class="meta-subitem">
+                <i class="bi bi-translate text-success me-1"></i>
+                <span><strong>Idioma:</strong> Español (es-CO)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="meta-section h-100 shadow-sm border-start-info">
+              <h5 class="section-title"><i class="bi bi-patch-check text-info"></i> Créditos</h5>
+              <p class="small mb-1"><strong>Autores:</strong> Ángela Valeria Castro Telá & Javier Francisco Pantoja Guanga</p>
+              <p class="small mb-1"><strong>Asesor:</strong> John Jairo Domínguez de la Rosa</p>
+              <p class="small mb-1"><strong>Co-asesor:</strong> Miguel Ángel Vargas Hernández</p>
+              <p class="small mb-0"><strong>Institución:</strong> Universidad de Nariño - Lic. en Informática</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="meta-section bg-light mt-3 text-center border-dashed">
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <img src="assets/img/creativecommons.png" alt="CC BY-NC-SA" style="height: 20px; width: auto; object-fit: contain;">
+            <span class="small fw-bold">Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
