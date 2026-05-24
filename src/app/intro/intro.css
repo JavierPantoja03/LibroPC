@@ -1,0 +1,305 @@
+/* --- 1. ESTRUCTURA Y FONDO --- */
+.page-background {
+  background: linear-gradient(135deg, #1976D2 0%, #D32F2F 100%);
+  height: 100vh;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  perspective: 2500px;
+  overflow: hidden;
+}
+
+.book-container {
+  width: 95%; 
+  max-width: 1100px; 
+  height: 85vh;
+  position: relative; 
+  transform-style: preserve-3d;
+}
+
+.book-body {
+  background-color: #ffffff; 
+  display: flex; 
+  width: 100%; 
+  height: 100%;
+  border-radius: 15px; 
+  border-top: 10px solid #f1c40f; 
+  position: relative;
+  transform-style: preserve-3d;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.book-spine {
+  position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 30px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.03) 50%, transparent);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* --- 2. LÓGICA DE GIRO (EFECTO HOJA REAL) --- */
+.page-side {
+  flex: 1; 
+  height: 100%; 
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.page-front, .page-back {
+  position: absolute; 
+  top: 0; left: 0; width: 100%; height: 100%;
+  backface-visibility: hidden;
+}
+
+.page-front { 
+  background: white; 
+  z-index: 2; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.page-back { 
+  background: #ffffff; 
+  transform: rotateY(180deg); 
+  z-index: 1; 
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.05); 
+  border-right: 1px solid #ddd;
+}
+
+.page-left { transform-origin: right center; }
+.page-right { transform-origin: left center; }
+
+/* --- 2.1 ANIMACIONES DE SALIDA (FLIP) --- */
+.page-left.flip-to-right { 
+  transform: rotateY(-180deg); 
+  z-index: 15 !important;
+}
+
+.page-left.page-exit-reverse { 
+  transform: rotateY(180deg); 
+  z-index: 15 !important; 
+}
+
+.page-right.flip-to-left { 
+  transform: rotateY(-180deg); 
+  z-index: 15 !important; 
+}
+
+/* --- 3. DISEÑO GORETTI Y MEJORAS --- */
+.text-gradient {
+  background: linear-gradient(90deg, #1a237e, #D32F2F);
+  -webkit-background-clip: text; 
+  background-clip: text;
+  color: transparent; 
+  display: inline-block;
+  font-weight: 800;
+}
+
+.underline-glow {
+  width: 50px; height: 3px;
+  background: #f1c40f; border-radius: 10px;
+}
+
+.cita-minimalista {
+  background: #f8f9fa;
+  border-left: 4px solid #f1c40f;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+@keyframes bombilla-pulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0px #f1c40f); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 8px #f1c40f); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0px #f1c40f); }
+}
+
+.icon-light-pulse {
+  display: inline-block;
+  animation: bombilla-pulse 2s infinite ease-in-out;
+}
+
+/* --- 3.1 ESTILOS PARA TÍTULOS DE PILARES --- */
+.fw-900 { font-weight: 900; }
+.letter-spacing-tight { letter-spacing: -1px; }
+
+/* --- 4. PILARES Y FICHAS LLAMATIVAS (AJUSTADAS PARA SUBIR) --- */
+.pilar-card-premium {
+  background: #ffffff; 
+  border-radius: 20px; 
+  border-top: 5px solid #ccc; 
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  cursor: pointer; 
+  min-height: 120px; /* Reducido de 140px para ganar espacio */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.pilar-card-premium:hover { 
+  transform: translateY(-8px) rotateX(5deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.pilar-card-premium:active { transform: scale(0.92); }
+
+.card-red { border-top-color: #D32F2F; background: #fffcfc; }
+.card-blue { border-top-color: #1976D2; background: #fafdff; }
+
+.pilar-icon-wrapper {
+  font-size: 2.2rem; /* Reducido levemente para ahorrar espacio */
+  margin-bottom: 5px;
+  transition: transform 0.3s ease;
+}
+
+.pilar-badge {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 50px;
+  margin-top: 3px;
+}
+
+.badge-red { background: #ffebee; color: #d32f2f; }
+.badge-blue { background: #e3f2fd; color: #1976d2; }
+
+/* --- AJUSTE ESPECÍFICO BOTÓN ÍNDICE --- */
+#tour-indice {
+  max-width: 95%;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+/* ==============================================================
+   5. MODAL DE DETALLE PREMIUM (MANTENIDO)
+   ============================================================== */
+.pilar-detail-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(13, 17, 54, 0.85); 
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.detail-card-premium {
+  background: #ffffff;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 45px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  border: none;
+  position: relative;
+}
+
+.card-header-pilar-new {
+  height: 140px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-red { background: linear-gradient(135deg, #f44336 0%, #b71c1c 100%); }
+.header-blue { background: linear-gradient(135deg, #2196f3 0%, #0d47a1 100%); }
+
+.detail-icon-circle-new {
+  width: 90px;
+  height: 90px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 5;
+  margin-top: 40px;
+  animation: pulse-mini 2s infinite;
+}
+
+.wave-decoration {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+.pilar-tag {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.tag-red { background: #ffebee; color: #d32f2f; }
+.tag-blue { background: #e3f2fd; color: #1976d2; }
+
+.description-box-new {
+  background: #fdfdfd;
+  padding: 20px;
+  border-radius: 25px;
+  border: 2px solid #eee;
+  margin: 0 10px;
+}
+
+.border-red { border-left: 8px solid #d32f2f !important; }
+.border-blue { border-left: 8px solid #1976d2 !important; }
+
+.texto-detalle-modal-new {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.btn-entendido-premium {
+  background: linear-gradient(90deg, #1a237e, #3949ab);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border: none;
+  border-bottom: 5px solid #0d1137;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.btn-entendido-premium:hover {
+  transform: translateY(-3px) scale(1.02);
+  filter: brightness(1.1);
+  box-shadow: 0 10px 20px rgba(26, 35, 126, 0.4);
+}
+
+@keyframes pulse-mini {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+/* --- 6. ADAPTACIÓN MÓVIL --- */
+@media (max-width: 991px) {
+  .book-container { height: 90vh; }
+  .page-side { position: absolute; width: 100%; height: 100%; }
+  .page-left { z-index: 20; }
+  .page-right { z-index: 10; }
+  .page-right.active-mobile { z-index: 30; transform: translateZ(5px); }
+  .detail-card-premium { max-width: 90%; }
+  
+  .h2.letter-spacing-tight {
+    font-size: 1.3rem;
+  }
+}

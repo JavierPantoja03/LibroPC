@@ -1,0 +1,17 @@
+<router-outlet></router-outlet>
+
+<div class="contenedor-herramientas-flotantes">
+  
+  <button class="boton-tutorial-fijo" 
+          (click)="comenzarGuia()" 
+          title="Ver tutorial de la página">
+    <i class="bi bi-question-circle-fill"></i>
+  </button>
+
+  <button class="boton-voz-fijo" 
+          (click)="leerPagina()" 
+          [title]="estaSonando() ? 'Pausar audio' : 'Escuchar contenido'">
+    <i [class]="estaSonando() ? 'bi bi-pause-fill' : 'bi bi-volume-up-fill'"></i>
+  </button>
+
+</div>

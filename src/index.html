@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ambiente Pensamiento Computacional</title>
+  <base href="/">
+  <!-- Meta tag fundamental para Responsive Web Design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" type="image/x-icon" href="libro.png">
+
+  <!-- Iconos de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Fuentes completas (Añadí Montserrat y Patrick Hand que usas en tu CSS) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Quicksand:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <style>
+    /* Evitamos que el cuerpo tenga scroll o márgenes extra en móviles */
+    html, body { 
+      margin: 0; 
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: 'Quicksand', sans-serif; 
+      overflow: hidden; /* Importante para que el libro no baile en la pantalla */
+      touch-action: manipulation; /* Mejora la respuesta táctil en celulares */
+    }
+
+    /* Ocultar botón nativo de Botpress v3 */
+    #bp-web-widget-container, 
+    .bpw-widget-btn, 
+    #connector-widget,
+    iframe[aria-label="Botpress Webchat Badge"] {
+      display: none !important;
+      visibility: hidden !important;
+    }
+
+    /* Asegurar que la ventana del chat esté por encima de todo cuando se abra */
+    .bpw-layout { 
+      z-index: 2000000 !important; 
+    }
+  </style>
+</head>
+<body>
+  <app-root></app-root>
+
+  <!-- Scripts de Botpress -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2026/02/13/00/20260213003506-SU1WLO6M.js" defer></script>
+</body>
+</html>
