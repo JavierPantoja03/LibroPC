@@ -1,5 +1,5 @@
-/* Unificado y optimizado para cumplir con el presupuesto de Angular (Budget) */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700;800&family=Montserrat:wght@400;600&display=swap');
+/* Unificado y optimizado - Versión final corregida y responsiva */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Quicksand:wght@700;800&family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&display=swap');
 
 /* --- 1. ESTRUCTURA PRINCIPAL Y FONDO --- */
 .page-background {
@@ -31,15 +31,8 @@
   transform-origin: left center; 
 }
 
-.flip-exit-left {
-  transform-origin: left center !important;
-  transform: rotateY(-180deg) !important;
-}
-
-.flip-exit-right {
-  transform-origin: right center !important;
-  transform: rotateY(180deg) !important;
-}
+.flip-exit-left { transform-origin: left center !important; transform: rotateY(-180deg) !important; }
+.flip-exit-right { transform-origin: right center !important; transform: rotateY(180deg) !important; }
 
 /* --- 3. DISEÑO DE LAS CARAS DE LA HOJA --- */
 .page-front {
@@ -51,211 +44,181 @@
   box-shadow: 0 15px 35px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
-  backface-visibility: hidden;
   position: absolute;
   top: 0; left: 0;
   z-index: 2;
   overflow: hidden;
 }
 
-.page-back {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #f0f0f0;
-  border-radius: 10px 40px 40px 10px;
-  transform: rotateY(180deg); 
-  backface-visibility: hidden;
-  z-index: 1;
-  box-shadow: inset 0 0 50px rgba(0,0,0,0.1);
-}
+.scroll-container { flex: 1; overflow-y: auto; padding: 30px; }
 
-.scroll-container { 
-  flex: 1; 
-  overflow-y: auto; 
-  padding: 30px; 
-}
+/* --- 4. TÍTULOS --- */
+.titulo-personalizado { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 1.5rem; color: #2c3e50; text-align: center; }
 
-/* --- 4. TÍTULOS Y TEXTO RESALTADO --- */
-.titulo-personalizado {
-  font-family: 'Quicksand', sans-serif; 
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: #2c3e50;
-  text-align: center;
-}
-
-.titulo-personalizado span {
-  font-weight: 800 !important;
-  text-transform: uppercase;
-}
-
-/* --- 5. TABLA TRANSFORMADA --- */
-.table-responsive { 
-  border-radius: 15px; 
-  overflow: hidden; 
-  border: 1px solid #d1d5db; 
-  margin-bottom: 2rem; 
-}
-
-.table-dark { 
-  background: linear-gradient(180deg, #333 0%, #000 100%) !important; 
-}
-
-.table-dark th {
-  font-family: 'Quicksand', sans-serif !important;
-  font-weight: 800 !important;
-  font-size: 1.15rem !important;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-
-.table td.fw-bold {
-  font-family: 'Quicksand', sans-serif !important;
-  font-weight: 700 !important;
-  text-transform: uppercase;
-  background-color: #f9fafb !important;
-}
+/* --- 5. TABLA --- */
+.table-responsive { border-radius: 15px; overflow: hidden; border: 1px solid #d1d5db; margin-bottom: 2rem; }
 
 /* --- 6. RECURSO AUDIOVISUAL --- */
-.video-section .text-dark {
-  font-family: 'Quicksand', sans-serif !important;
-  font-weight: 800 !important;
-  font-size: 1.6rem !important;
-  display: block;
-  text-align: center;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.video-section .text-dark::after {
-  content: "";
-  display: block;
-  width: 70px;
-  height: 5px;
-  background: #f1c40f;
-  margin: 10px auto 15px;
-  border-radius: 10px;
-}
-
 .video-wrapper {
   position: relative;
   width: 100%;
+  margin: 20px auto;
   padding-bottom: 56.25%; 
   height: 0;
   background: #000;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-  margin-top: 15px;
 }
 
 .video-wrapper iframe {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100% !important;
   height: 100% !important;
   border: 0;
 }
 
 /* --- 7. BOTONES PREMIUM --- */
-.btn-pantalla-completa {
-  font-family: 'Quicksand', sans-serif !important;
-  font-weight: 800 !important;
-  color: white !important;
-  padding: 12px 35px !important;
-  border-radius: 50px !important;
-  border: none !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1.2px !important;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2) !important;
-}
+.btn-pantalla-completa { font-family: 'Quicksand', sans-serif !important; font-weight: 800 !important; color: white !important; padding: 12px 35px !important; border-radius: 50px !important; border: none !important; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all 0.4s ease; box-shadow: 0 6px 15px rgba(0,0,0,0.2) !important; }
 
-.btn-pantalla-completa:hover {
-  transform: translateY(-5px) scale(1.05) !important;
-}
-
-/* --- 8. OTROS --- */
-.underline {
-  width: 60px;
-  height: 5px;
-  background-color: #f1c40f;
-  border-radius: 10px;
-  margin: 5px auto;
-}
-
-.goretti-card { border-top: 6px solid #D32F2F !important; border-radius: 15px; background: #ffffff; }
-.paz-card { border-top: 6px solid #1976D2 !important; border-radius: 15px; background: #ffffff; }
-
-/* --- 9. CONTENEDOR DE ACTIVIDADES (PDF) CORREGIDO --- */
+/* --- 9. CONTENEDOR DE ACTIVIDADES (IMAGEN + BOTONES) --- */
 .pdf-viewer-container {
   position: relative;
   width: 100%;
-  height: 700px;
+  aspect-ratio: 16 / 9; 
   border-radius: 12px;
   overflow: hidden;
-  background: #525659; /* Color de visor PDF estándar */
-  box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+  background: #f8f9fa;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
   margin-top: 10px;
 }
 
-/* Estilos específicos para cuando está en FullScreen nativo */
-.pdf-viewer-container:fullscreen {
-  width: 100vw;
-  height: 100vh;
-  background: #000;
-  border-radius: 0;
-}
-
-.pdf-viewer-container:-webkit-full-screen {
-  width: 100vw;
-  height: 100vh;
-  border-radius: 0;
-}
-
-.pdf-viewer {
+.content-zoom-wrapper {
   width: 100%;
   height: 100%;
-  border: none;
+  position: relative;
+}
+
+.buttons-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.hotspot-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: auto;
+  z-index: 101;
+}
+
+.image-viewer {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  object-position: center 20%; 
   display: block;
+}
+
+/* --- 10. BOTONES DINÁMICOS (LOGICA DE COLORES Y TAMAÑOS) --- */
+.dynamic-btn {
+  /* Estética mejorada con Poppins */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  
+  /* Tamaño y Ancho mejorado */
+  padding: 14px 20px;
+  font-size: 1rem; 
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 15px;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px; /* Más anchos */
+  transition: all 0.3s ease;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+.description-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 5px 10px;
+  border-radius: 8px;
+  /* Tipografía legible para descripciones */
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85rem; 
+  text-align: center;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 300px;
+  color: #4a4a4a;
+}
+
+/* PRIMARIA (ROSADO) */
+.primaria .dynamic-btn {
+  background: linear-gradient(135deg, #FFC1CC, #FF85A2);
+  color: #7a0033;
+  box-shadow: 0 4px 10px rgba(255, 133, 162, 0.4);
+}
+.primaria .dynamic-btn:hover {
+  transform: scale(1.05);
+  background: #FF6F91;
+  color: #fff;
+}
+
+/* BACHILLERATO (AZUL CLARITO) */
+.bachillerato .dynamic-btn {
+  background: linear-gradient(135deg, #81d4fa, #4fc3f7);
+  color: #01579b;
+  box-shadow: 0 4px 10px rgba(79, 195, 247, 0.4);
+}
+.bachillerato .dynamic-btn:hover {
+  transform: scale(1.05);
+  background: #29b6f6;
+  color: #fff;
+}
+
+/* --- ESTABILIDAD FULLSCREEN --- */
+.pdf-viewer-container:fullscreen,
+.pdf-viewer-container:-webkit-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  background: #000;
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-cerrar-fullscreen {
   position: absolute; 
-  top: 20px; 
-  right: 20px; 
+  top: 15px; 
+  right: 15px; 
   z-index: 9999; 
   background: rgba(0,0,0,0.8); 
   color: white; 
-  border: 2px solid rgba(255,255,255,0.3);
   border-radius: 8px; 
-  padding: 10px 20px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  transition: all 0.3s ease;
+  padding: 8px 16px;
 }
 
-.btn-cerrar-fullscreen:hover {
-  background: #000;
-  border-color: #fff;
-}
-
-/* --- 10. RESPONSIVE --- */
-@media (max-width: 991px) {
-  .pdf-viewer-container {
-    height: 500px;
-  }
-}
-
+/* --- 11. RESPONSIVE --- */
+@media (max-width: 991px) { .pdf-viewer-container { aspect-ratio: 4 / 3; } }
 @media (max-width: 768px) {
   .book-container { height: 95vh; }
-  .video-section .text-dark { font-size: 1.3rem !important; }
-  .scroll-container { padding: 15px; }
-  .titulo-personalizado { font-size: 1.2rem; }
+  .description-box { display: none; }
 }

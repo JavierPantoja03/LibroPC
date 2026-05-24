@@ -15,7 +15,7 @@
 
         <div class="scroll-container">
           
-          <div class="pdf-section mb-5 p-3 rounded-3 shadow-sm bg-light" *ngIf="currentClass?.pdfUrl" id="tour-pdf">
+          <div class="pdf-section mb-5 p-3 rounded-3 shadow-sm bg-light" *ngIf="currentClass?.imageUrl" id="tour-pdf">
             <div class="text-center mb-4">
               <h2 class="titulo-personalizado">
                 Gráfico de actividades que se tuvo en cuenta para desarrollar la actividad 
@@ -36,11 +36,30 @@
                 <i class="bi bi-x-circle me-2"></i> Salir de Pantalla Completa
               </button>
 
-              <embed 
-                *ngIf="safePdfUrl" 
-                [src]="safePdfUrl" 
-                type="application/pdf" 
-                class="pdf-viewer" />
+              <div class="content-zoom-wrapper">
+                
+                <div class="buttons-overlay" [ngClass]="currentClass.nivel">
+                  <div *ngFor="let link of currentClass.links" 
+                       class="hotspot-wrapper" 
+                       [style.top]="link.top" 
+                       [style.left]="link.left" 
+                       [style.width]="link.width">
+                    
+                    <a [href]="link.url" target="_blank" class="dynamic-btn">
+                      {{ link.label }}
+                    </a>
+                    
+                    <div class="description-box">
+                      {{ link.description }}
+                    </div>
+                  </div>
+                </div>
+
+                <img [src]="currentClass.imageUrl" 
+                     alt="Gráfico de actividades" 
+                     class="image-viewer" />
+              </div>
+
             </div>
           </div>
 

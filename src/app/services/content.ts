@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BUTTON_MAP, OverlayButton } from './button-config'; // Cambié PdfButton por OverlayButton por coherencia
 
 export interface Tripartite {
   conceptos: string;
@@ -23,6 +24,8 @@ export interface ClassPlan {
   porquePC: string;
   pdfUrl?: string; // 👈 AGREGADO: Propiedad para el pdf al inicio
   videoUrl?: string; // 👈 AGREGADO: Propiedad opcional para el video
+  imageUrl?: string;
+  links?: OverlayButton[]; // 👈 AGREGADO: Aquí se guardan los botones de cada clase
 }
 
 @Injectable({ providedIn: 'root' })
@@ -36,11 +39,12 @@ export class ContentService {
   private generateAllPlans() {
     const dataBase = [
 { 
-        id: 1, 
+        id: 1,
+        bachId: "1.1",
         fecha: '12-Jun', 
         titulo: 'Algoritmos y Emociones',        
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase1.pdf',// 👈 PDF clase 1 primaria
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.1.pdf', // 👈 PDF clase 1 bachillerato
+        img_pri: 'assets/images/primaria_images/clase1.png',// 👈 img clase 1 primaria
+        img_bac: 'assets/images/bachillerato_images/clase1.1.png', // 👈 img clase 1.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=RtTOii_heFA', // 👈 ID del video Clase 1
         
         // --- SECCIÓN PRIMARIA ---
@@ -75,10 +79,11 @@ export class ContentService {
       },
 { 
         id: 2, 
+        bachId: "2.1",
         fecha: '19-Jun', 
         titulo: 'Mundo Binario',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase2.pdf',// 👈 PDF clase 2
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.2.pdf', // 👈 PDF clase 2 bachillerato
+        img_pri: 'assets/images/primaria_images/clase2.png',// 👈 img clase 2 primaria
+        img_bac: 'assets/images/bachillerato_images/clase2.1.png', // 👈 img clase 2.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=rY3xlpU_J3Y', // 👈 ID del video Clase 2
         
         // --- SECCIÓN PRIMARIA ---
@@ -121,10 +126,11 @@ export class ContentService {
       },
 { 
         id: 3, 
+        bachId: "3.1",
         fecha: '26-Jun', 
         titulo: 'Patrones y Cuadrículas',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase3.pdf',// 👈 PDF clase 3
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.3.pdf', // 👈 PDF clase 3 bachillerato
+        img_pri: 'assets/images/primaria_images/clase3.png',// 👈 img clase 3 primaria
+        img_bac: 'assets/images/bachillerato_images/clase3.1.png', // 👈 img clase 3.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=3WqjWnRyPEA', // 👈 ID del video Clase 3
         
         // --- SECCIÓN PRIMARIA ---
@@ -167,10 +173,11 @@ export class ContentService {
       },
 { 
         id: 4, 
+        bachId: "4.1",
         fecha: '03-Jul', 
         titulo: 'Secuencias Narrativas',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase4.pdf',// 👈 PDF clase 4
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.4.pdf', // 👈 PDF clase 4 bachillerato
+        img_pri: 'assets/images/primaria_images/clase4.png',// 👈 img clase 4 primaria
+        img_bac: 'assets/images/bachillerato_images/clase4.1.png', // 👈 img clase 4.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=b5AOGN-6CF4', // 👈 ID del video Clase 4
         
         // --- SECCIÓN PRIMARIA ---
@@ -214,10 +221,11 @@ export class ContentService {
       },
 { 
         id: 5, 
+        bachId: "5.1",
         fecha: '10-Jul', 
         titulo: 'Tangram Algorítmico',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase5.pdf',// 👈 PDF clase 5
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.5.pdf', // 👈 PDF clase 5 bachillerato
+        img_pri: 'assets/images/primaria_images/clase5.png',// 👈 img clase 5 primaria
+        img_bac: 'assets/images/bachillerato_images/clase5.1.png', // 👈 img clase 5.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=fSEAiDpvjPw', // 👈 ID del video Clase 5
         
         // --- SECCIÓN PRIMARIA ---
@@ -261,10 +269,11 @@ export class ContentService {
       },
 { 
         id: 6, 
+        bachId: "6.1",
         fecha: '14-Ago', 
         titulo: 'Guías Bebras',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase6.pdf',// 👈 PDF clase 6
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.6.pdf', // 👈 PDF clase 6 bachillerato
+        img_pri: 'assets/images/primaria_images/clase6.png',// 👈 img clase 6 primaria
+        img_bac: 'assets/images/bachillerato_images/clase6.1.png', // 👈 img clase 6.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=-RiQVB_ZIAQ', // 👈 ID del video Clase 6
         
         // --- SECCIÓN PRIMARIA ---
@@ -308,10 +317,11 @@ export class ContentService {
       },
 { 
         id: 7, 
+        bachId: "7.1",
         fecha: '21-Ago', 
         titulo: 'Escape Room',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase7.pdf',// 👈 PDF clase 7
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.7.pdf', // 👈 PDF clase 7 bachillerato
+        img_pri: 'assets/images/primaria_images/clase7.png',// 👈 img clase 7 primaria
+        img_bac: 'assets/images/bachillerato_images/clase7.1.png', // 👈 img clase 7.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=o-87oZSvrIo', // 👈 ID del video Clase 7
         
         // --- SECCIÓN PRIMARIA ---
@@ -355,10 +365,11 @@ export class ContentService {
       },
 { 
         id: 8, 
+        bachId: "8.1",
         fecha: '28-Ago', 
         titulo: 'Explorando Scratch Jr',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase8.pdf',// 👈 PDF clase 8
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.8.pdf', // 👈 PDF clase 8 bachillerato
+        img_pri: 'assets/images/primaria_images/clase8.png',// 👈 img clase 8 primaria
+        img_bac: 'assets/images/bachillerato_images/clase8.1.png', // 👈 img clase 8.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=8lBNndM9Odc', // 👈 ID del video Clase 8
         
         // --- SECCIÓN PRIMARIA ) ---
@@ -403,10 +414,11 @@ export class ContentService {
       },
 { 
         id: 9, 
+        bachId: "9.1",
         fecha: '04-Sep', 
         titulo: 'Guiar al Robot Humano',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase9.pdf',// 👈 PDF clase 9
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.9.pdf', // 👈 PDF clase 9 bachillerato
+        img_pri: 'assets/images/primaria_images/clase9.png',// 👈 img clase 9 primaria
+        img_bac: 'assets/images/bachillerato_images/clase9.1.png', // 👈 img clase 9.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=v9ePWzYkNjQ', // 👈 ID del video Clase 9
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -445,10 +457,11 @@ export class ContentService {
       },
 { 
         id: 10, 
+        bachId: "10.1",
         fecha: '11-Sep', 
         titulo: 'Interfaz Digital',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase10.pdf',// 👈 PDF clase 10
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.10.pdf', // 👈 PDF clase 10 bachillerato
+        img_pri: 'assets/images/primaria_images/clase10.png',// 👈 img clase 10 primaria
+        img_bac: 'assets/images/bachillerato_images/clase10.1.png', // 👈 img clase 10.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=V30LKwSjZWA', // 👈 ID del video Clase 10
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -492,10 +505,11 @@ export class ContentService {
       },
 { 
         id: 11, 
+        bachId: "11.1",
         fecha: '18-Sep', 
         titulo: 'Ritmo y Algoritmo',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase11.pdf',// 👈 PDF clase 11
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.11.pdf', // 👈 PDF clase 11 bachillerato
+        img_pri: 'assets/images/primaria_images/clase11.png',// 👈 img clase 11 primaria
+        img_bac: 'assets/images/bachillerato_images/clase11.1.png', // 👈 img clase 11.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=Q_mzuqeDWYE', // 👈 ID del video Clase 11
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -532,10 +546,11 @@ export class ContentService {
       },
 { 
         id: 12, 
+        bachId: "12.1",
         fecha: '25-Sep', 
         titulo: 'Stop del PC',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase12.pdf',// 👈 PDF clase 12
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.12.pdf', // 👈 PDF clase 12 bachillerato
+        img_pri: 'assets/images/primaria_images/clase12.png',// 👈 img clase 12  primaria
+        img_bac: 'assets/images/bachillerato_images/clase12.1.png', // 👈 img clase 12.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=4viWOgtpwn4', // 👈 ID del video Clase 12
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -573,10 +588,11 @@ export class ContentService {
       },
 { 
         id: 13, 
+        bachId: "13.1",
         fecha: '02-Oct', 
         titulo: 'Armado Robótico',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase13.pdf',// 👈 PDF clase 13
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.13.pdf', // 👈 PDF clase 13 bachillerato
+        img_pri: 'assets/images/primaria_images/clase13.png',// 👈 img clase 13 primaria
+        img_bac: 'assets/images/bachillerato_images/clase13.1.png', // 👈 img clase 13.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=Li6DipJ-1U4', // 👈 ID del video Clase 13
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -615,10 +631,11 @@ export class ContentService {
       },
 { 
         id: 14, 
+        bachId: "14.1",
         fecha: '09-Oct', 
         titulo: 'Algoritmos en Plastilina',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase14.pdf',// 👈 PDF clase 14
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.14.pdf', // 👈 PDF clase 14 bachillerato
+        img_pri: 'assets/images/primaria_images/clase14.png',// 👈 img clase 14 primaria
+        img_bac: 'assets/images/bachillerato_images/clase14.1.png', // 👈 img clase 14.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=ibYB7Ex6Vq4', // 👈 ID del video Clase 14
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -658,10 +675,11 @@ export class ContentService {
       },
 { 
         id: 15, 
+        bachId: "15.1",
         fecha: '16-Oct', 
         titulo: 'Debate Ético',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase15.pdf',// 👈 PDF clase 15
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.15.pdf', // 👈 PDF clase 15 bachillerato
+        img_pri: 'assets/images/primaria_images/clase15.png',// 👈 img clase 15 primaria
+        img_bac: 'assets/images/bachillerato_images/clase15.1.png', // 👈 img clase 15.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=bRLrLfTP4ys', // 👈 ID del video Clase 15
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -700,10 +718,11 @@ export class ContentService {
       },
 { 
         id: 16, 
+        bachId: "16.1",
         fecha: '23-Oct', 
         titulo: 'Intro a Micro:bit',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase16.pdf',// 👈 PDF clase 16
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.16.pdf', // 👈 PDF clase 16 bachillerato
+        img_pri: 'assets/images/primaria_images/clase16.png',// 👈 img clase 16 primaria
+        img_bac: 'assets/images/bachillerato_images/clase16.1.png', // 👈 img clase 16.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=PIilTo1e22s', // 👈 ID del video Clase 16
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -741,10 +760,11 @@ export class ContentService {
       },
 { 
         id: 17, 
+        bachId: "17.1",
         fecha: '30-Oct', 
         titulo: 'Variables y Sensores',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase17.pdf',// 👈 PDF clase 17
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.17.pdf', // 👈 PDF clase 17 bachillerato
+        img_pri: 'assets/images/primaria_images/clase17.png',// 👈 img clase 17 primaria
+        img_bac: 'assets/images/bachillerato_images/clase17.1.png', // 👈 img clase 17.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=bQSKc9gZEgc', // 👈 ID del video Clase 17
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -782,10 +802,11 @@ export class ContentService {
       },
 { 
         id: 18, 
+        bachId: "18.1",
         fecha: '06-Nov', 
         titulo: 'CuteBot: El Reto Final',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase18.pdf',// 👈 PDF clase 18
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.18.pdf', // 👈 PDF clase 18 bachillerato
+        img_pri: 'assets/images/primaria_images/clase18.png',// 👈 img clase 18 primaria
+        img_bac: 'assets/images/bachillerato_images/clase18.1.png', // 👈 img clase 18.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=cvYNuSlr-14', // 👈 ID del video Clase 18
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -824,10 +845,11 @@ export class ContentService {
       },
 { 
         id: 19, 
+        bachId: "19.1",
         fecha: '13-Nov', 
         titulo: 'CuteBot: Bloques de Movimiento',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase19.pdf',// 👈 PDF clase 19
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.19.pdf', // 👈 PDF clase 19 bachillerato
+        img_pri: 'assets/images/primaria_images/clase19.png',// 👈 img clase 19 primaria
+        img_bac: 'assets/images/bachillerato_images/clase19.1.png', // 👈 img clase 19.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=I9rLbA117hY', // 👈 ID del video Clase 19
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -873,10 +895,11 @@ export class ContentService {
       },
 { 
         id: 20, 
+        bachId: "20.1",
         fecha: '20-Nov', 
         titulo: 'CuteBot: Gran Carrera Final',
-        pdf_pri: 'assets/pdfs/primaria_pdfs/clase20.pdf',// 👈 PDF clase 20
-        pdf_bac: 'assets/pdfs/bachiller_pdfs/clase1.20.pdf', // 👈 PDF clase 20 bachillerato
+        img_pri: 'assets/images/primaria_images/clase20.png',// 👈 img clase 20 primaria
+        img_bac: 'assets/images/bachillerato_images/clase20.1.png', // 👈 img clase 20.1 bachillerato
         video_url: 'https://www.youtube.com/watch?v=fd8DImfNrfo', // 👈 ID del video Clase 20
         
         // --- SECCIÓN PRIMARIA (NO TOCAR) ---
@@ -931,6 +954,11 @@ dataBase.forEach(data => {
 
   private mapPlan(data: any, nivel: 'primaria' | 'bachillerato'): ClassPlan {
     const isPri = nivel === 'primaria';
+
+    // CORRECCIÓN: Si es bachillerato, buscamos por bachId, si no existe usamos el id por defecto
+    const idParaBotones = isPri ? String(data.id) : (data.bachId || String(data.id));
+    const links = BUTTON_MAP[idParaBotones] || [];
+
     // Automatización de Autores para todas las clases
     const autoresHeader = `<strong>Lineamientos curriculares</strong><br>
     <strong>Autores:</strong> Tania Milena Benavides Villota, Karol Ximena Burbano Cabrera y Luis Eduardo Paz Saavedra.<br><br>`;
@@ -955,8 +983,9 @@ dataBase.forEach(data => {
       preguntasReflexivas: isPri ? (data.pRef_Pri || []) : (data.pRef_Bach || []),
       porquePC: isPri ? (data.porquePC_pri || data.porquePC) : (data.porquePC_bac || 'La actividad desarrolla el pensamiento computacional a través de la lógica.'),
       // ⬇️ CORRECCIÓN AQUÍ PDFS INDEPENDIENTES antes-:  pdfUrl: data.pdfUrl, // Aquí se asigna el PDF:  ⬇️
-      pdfUrl: isPri ? data.pdf_pri : data.pdf_bac,
-      videoUrl: data.video_url // 👈 AGREGADO: Mapea la URL del video de la base de datos
+      imageUrl: isPri ? data.img_pri : data.img_bac,
+      videoUrl: data.video_url, // 👈 AGREGADO: Mapea la URL del video de la base de datos
+      links: links
       
     };
   }
