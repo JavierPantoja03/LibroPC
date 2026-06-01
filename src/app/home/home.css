@@ -254,3 +254,56 @@ html, body {
 .meta-item p { margin: 0; color: #333; font-size: 0.9rem; }
 .border-start-warning { border-left-color: #f1c40f !important; }
 .border-start-info { border-left-color: #0dcaf0 !important; }
+
+/* =========================================================================
+   8. AJUSTES RESPONSIVOS PARA CELULARES (NUEVO CÓDIGO)
+   ========================================================================= */
+@media (max-width: 768px) {
+  /* Habilita el scroll vertical en móviles */
+  html, body {
+    overflow-y: auto !important;
+    overflow-x: hidden;
+  }
+
+  /* Ajusta la escena principal para que permita desplazarse hacia abajo */
+  .book-scene {
+    height: auto;
+    min-height: 100vh;
+    padding: 30px 0 50px 0;
+  }
+
+  /* Reduce ligeramente la altura del libro para ajustarse mejor a pantallas pequeñas */
+  .book-container {
+    height: 700px; 
+    margin-bottom: 40px; /* Evita que quede cortado al final de la pantalla */
+  }
+
+  /* Da espacio adicional al final de la portada para proteger el botón */
+  .middle-content {
+    padding-bottom: 75px; 
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  /* Asegura que el botón principal no choque con la banda de licencia */
+  .start-btn {
+    margin-bottom: 25px;
+  }
+
+  /* Hace el botón de 'Saltar Video' más pequeño en móviles */
+  .skip-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+  
+  /* Ajusta el banner del video para que use más ancho */
+  .video-banner-container {
+    width: 95%;
+  }
+
+  /* Reduce el tamaño del círculo del video saludo para ahorrar espacio */
+  .character-circle {
+    width: 120px;
+    height: 120px;
+  }
+}
