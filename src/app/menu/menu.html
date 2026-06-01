@@ -20,12 +20,12 @@
             
             <div class="scroll-container">
               <div class="list-group list-group-flush">
-                <a *ngFor="let c of classesPrimary" 
+                <a *ngFor="let c of classesPrimary; let i = index" 
                    (click)="entrarAClase('/clase/' + c.id, leftSide, 'right')"
                    style="cursor: pointer;"
                    class="list-group-item list-group-item-action py-2">
                   <div class="d-flex align-items-center">
-                    <span class="date text-secondary fw-bold small me-2" style="min-width: 45px;">{{ c.mes }}</span>
+                    <span class="date text-secondary fw-bold small me-2" style="min-width: 45px;">{{ i + 1 }}).</span>
                     <div class="flex-grow-1">
                       <span class="d-block fw-semibold text-dark small">{{ c.titulo }}</span>
                       <small class="text-danger fw-bold" style="font-size: 0.6rem;">{{ c.tema }}</small>
@@ -68,12 +68,12 @@
             
             <div class="scroll-container">
               <div class="list-group list-group-flush">
-                <a *ngFor="let c of classesSecondary" 
+                <a *ngFor="let c of classesSecondary; let i = index" 
                    (click)="entrarAClase('/clase/' + c.id, rightSide, 'left')"
                    style="cursor: pointer;"
                    class="list-group-item list-group-item-action py-2">
                   <div class="d-flex align-items-center">
-                    <span class="date text-secondary fw-bold small me-2" style="min-width: 45px;">{{ c.mes }}</span>
+                    <span class="date text-secondary fw-bold small me-2" style="min-width: 45px;">{{ i + 1 }}).</span>
                     <div class="flex-grow-1">
                       <span class="d-block fw-semibold text-dark small">{{ c.titulo }}</span>
                       <small class="text-primary fw-bold" style="font-size: 0.6rem;">{{ c.tema }}</small>
@@ -100,5 +100,4 @@
 
     </div>
   </div>
-  
-  </div>
+</div>
