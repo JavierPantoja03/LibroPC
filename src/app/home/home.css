@@ -169,7 +169,7 @@ html, body {
 .logo-udenar { height: 55px !important; }
 
 .middle-content {
-  padding: 30px 20px 45px 20px; /* Reducido padding inferior para bajar el botón */
+  padding: 30px 20px 45px 20px;
   display: flex; flex-direction: column; align-items: center;
   width: 100%; height: 100%; justify-content: space-between; text-align: center;
 }
@@ -207,21 +207,19 @@ html, body {
 .sub-title { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; color: #f1c40f; font-weight: 700; margin: 4px 0; }
 .notebook-label { background-color: #f1c40f; color: #1a237e; padding: 5px 18px; border-radius: 5px; font-weight: 900; font-size: 0.8rem; margin-top: 5px; }
 
-/* --- SECCIÓN DE TEXTOS AGRANDADOS --- */
 .authors-info { 
-  font-size: 0.95rem; /* Agrandado un poco más */
+  font-size: 0.95rem; 
   line-height: 1.4; 
-  margin-bottom: 20px; /* Más espacio respecto al botón */
+  margin-bottom: 20px; 
   font-weight: 500;
 }
 .authors-info p { margin: 4px 0; }
 
-/* --- BOTÓN BAJADO --- */
 .start-btn {
   background-color: #fff; color: #1a237e; padding: 12px 45px;
   font-size: 1.1rem; font-weight: 900; border-radius: 40px; border: none;
   cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  margin-bottom: 0px; /* Pegado más al borde inferior del contenedor */
+  margin-bottom: 0px; 
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .start-btn:hover { background: #f1c40f; transform: scale(1.08); }
@@ -255,55 +253,71 @@ html, body {
 .border-start-warning { border-left-color: #f1c40f !important; }
 .border-start-info { border-left-color: #0dcaf0 !important; }
 
+
 /* =========================================================================
-   8. AJUSTES RESPONSIVOS PARA CELULARES (NUEVO CÓDIGO)
+   8. AJUSTES RESPONSIVOS (SOLUCIÓN FLUIDA DEFINITIVA PARA CUALQUIER CELULAR)
    ========================================================================= */
 @media (max-width: 768px) {
-  /* Habilita el scroll vertical en móviles */
+  /* Habilita el scroll general */
   html, body {
     overflow-y: auto !important;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
   }
 
-  /* Ajusta la escena principal para que permita desplazarse hacia abajo */
   .book-scene {
     height: auto;
     min-height: 100vh;
-    padding: 30px 0 50px 0;
+    padding: 2vh 0 5vh 0; /* Padding dinámico según altura */
+    align-items: flex-start; 
   }
 
-  /* Reduce ligeramente la altura del libro para ajustarse mejor a pantallas pequeñas */
+  /* 1. ALTURA FLUIDA: El libro se adapta al alto del celular sin escalas falsas */
   .book-container {
-    height: 700px; 
-    margin-bottom: 40px; /* Evita que quede cortado al final de la pantalla */
+    width: 90% !important;
+    max-width: 420px; 
+    height: 85vh !important; /* Ocupa el 85% de la pantalla */
+    min-height: 580px !important; /* Limite de seguridad por si es muy enano */
+    max-height: 740px !important; /* Límite máximo para no verse gigante */
+    transform: none !important; /* SIN SCALE, es real */
+    margin: 0 auto 30px auto; 
   }
 
-  /* Da espacio adicional al final de la portada para proteger el botón */
+  /* 2. SCROLL INTERNO DE SEGURIDAD */
   .middle-content {
-    padding-bottom: 75px; 
+    padding: 20px 10px 55px 10px !important; /* 55px esquiva la franja de licencia blanca */
     justify-content: flex-start;
-    gap: 15px;
+    gap: 2vh; /* Los espacios internos respiran dinámicamente */
+    
+    /* Esta magia permite hacer scroll DENTRO de la tapa si la pantalla es enana */
+    overflow-y: auto !important; 
+    scrollbar-width: none; 
   }
+  .middle-content::-webkit-scrollbar { display: none; }
 
-  /* Asegura que el botón principal no choque con la banda de licencia */
-  .start-btn {
-    margin-bottom: 25px;
-  }
-
-  /* Hace el botón de 'Saltar Video' más pequeño en móviles */
-  .skip-btn {
-    padding: 6px 12px;
-    font-size: 0.75rem;
+  /* 3. TAMAÑOS DINÁMICOS: Se encogen solos si no hay espacio */
+  .character-circle { 
+    width: min(22vh, 130px) !important; 
+    height: min(22vh, 130px) !important; 
+    flex-shrink: 1; 
   }
   
-  /* Ajusta el banner del video para que use más ancho */
-  .video-banner-container {
-    width: 95%;
+  /* clamp = Tamaño que varía fluidamente entre un mínimo y un máximo */
+  .main-title { font-size: clamp(1.1rem, 4vw, 1.4rem) !important; }
+  .authors-info { font-size: clamp(0.75rem, 3vw, 0.95rem) !important; margin-bottom: 5px !important; }
+
+  .inst-logo { height: clamp(25px, 5vh, 40px) !important; }
+  .logo-udenar { height: clamp(30px, 6vh, 45px) !important; }
+
+  /* 4. EL BOTÓN SE AUTO-AJUSTA */
+  .start-btn {
+    margin-top: auto !important; /* Se empuja hacia abajo naturalmente */
+    margin-bottom: 10px !important;
+    padding: clamp(10px, 2vh, 12px) clamp(25px, 6vw, 45px) !important;
+    font-size: clamp(0.95rem, 3vw, 1.1rem) !important;
+    flex-shrink: 0; /* Asegura que el botón jamás se ponga aplastado */
   }
 
-  /* Reduce el tamaño del círculo del video saludo para ahorrar espacio */
-  .character-circle {
-    width: 120px;
-    height: 120px;
-  }
+  /* Extras */
+  .skip-btn { padding: 6px 12px; font-size: 0.75rem; }
+  .video-banner-container { width: 95%; }
 }
