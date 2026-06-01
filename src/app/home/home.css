@@ -253,12 +253,10 @@ html, body {
 .border-start-warning { border-left-color: #f1c40f !important; }
 .border-start-info { border-left-color: #0dcaf0 !important; }
 
-
 /* =========================================================================
    8. AJUSTES RESPONSIVOS (SOLUCIÓN FLUIDA DEFINITIVA PARA CUALQUIER CELULAR)
    ========================================================================= */
 @media (max-width: 768px) {
-  /* Habilita el scroll general */
   html, body {
     overflow-y: auto !important;
     overflow-x: hidden !important;
@@ -267,57 +265,38 @@ html, body {
   .book-scene {
     height: auto;
     min-height: 100vh;
-    padding: 2vh 0 5vh 0; /* Padding dinámico según altura */
+    padding: 2vh 0 5vh 0;
     align-items: flex-start; 
   }
 
-  /* 1. ALTURA FLUIDA: El libro se adapta al alto del celular sin escalas falsas */
   .book-container {
     width: 90% !important;
     max-width: 420px; 
-    height: 85vh !important; /* Ocupa el 85% de la pantalla */
-    min-height: 580px !important; /* Limite de seguridad por si es muy enano */
-    max-height: 740px !important; /* Límite máximo para no verse gigante */
-    transform: none !important; /* SIN SCALE, es real */
-    margin: 0 auto 30px auto; 
+    height: auto !important; /* Ajuste para evitar recortes */
+    min-height: 650px;
+    margin: 10px auto 30px auto; 
+    transform: none !important;
   }
 
-  /* 2. SCROLL INTERNO DE SEGURIDAD */
   .middle-content {
-    padding: 20px 10px 55px 10px !important; /* 55px esquiva la franja de licencia blanca */
+    padding: 20px 10px 55px 10px !important;
     justify-content: flex-start;
-    gap: 2vh; /* Los espacios internos respiran dinámicamente */
-    
-    /* Esta magia permite hacer scroll DENTRO de la tapa si la pantalla es enana */
-    overflow-y: auto !important; 
-    scrollbar-width: none; 
+    gap: 15px;
+    overflow-y: visible !important;
   }
-  .middle-content::-webkit-scrollbar { display: none; }
 
-  /* 3. TAMAÑOS DINÁMICOS: Se encogen solos si no hay espacio */
   .character-circle { 
-    width: min(22vh, 130px) !important; 
-    height: min(22vh, 130px) !important; 
-    flex-shrink: 1; 
+    width: 120px !important; 
+    height: 120px !important; 
   }
   
-  /* clamp = Tamaño que varía fluidamente entre un mínimo y un máximo */
   .main-title { font-size: clamp(1.1rem, 4vw, 1.4rem) !important; }
-  .authors-info { font-size: clamp(0.75rem, 3vw, 0.95rem) !important; margin-bottom: 5px !important; }
+  .authors-info { font-size: clamp(0.8rem, 3vw, 0.95rem) !important; }
 
-  .inst-logo { height: clamp(25px, 5vh, 40px) !important; }
-  .logo-udenar { height: clamp(30px, 6vh, 45px) !important; }
-
-  /* 4. EL BOTÓN SE AUTO-AJUSTA */
   .start-btn {
-    margin-top: auto !important; /* Se empuja hacia abajo naturalmente */
-    margin-bottom: 10px !important;
-    padding: clamp(10px, 2vh, 12px) clamp(25px, 6vw, 45px) !important;
-    font-size: clamp(0.95rem, 3vw, 1.1rem) !important;
-    flex-shrink: 0; /* Asegura que el botón jamás se ponga aplastado */
+    margin-top: 15px !important;
+    margin-bottom: 20px !important;
+    padding: 12px 30px !important;
+    font-size: 1rem !important;
   }
-
-  /* Extras */
-  .skip-btn { padding: 6px 12px; font-size: 0.75rem; }
-  .video-banner-container { width: 95%; }
 }
