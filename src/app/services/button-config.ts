@@ -193,7 +193,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: 'Aprendamos en comunidad', 
       description: 'Video introductorio sobre los retos Bebras y cómo abordar problemas de lógica computacional.',
-      url: 'https://www.youtube.com/watch?v=3oDOAtJK0_s', 
+      url: 'https://www.youtube.com/watch?v=OTA3lK9884Y', 
       top: '30%', left: '5%', width: '35%' 
     },
     { 
@@ -205,7 +205,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: '¿Por qué es importante las guías Bebras en primaria?', 
       description: 'Artículo académico sobre cómo los retos Bebras promueven el pensamiento computacional en la educación escolar.',
-      url: 'https://revistas.eia.edu.co/index.php/reveia/article/view/1733', 
+      url: 'https://revistas.eia.edu.co/index.php/reveia/article/view/1733/1597', 
       top: '52%', left: '55%', width: '35%' // Ajustado a 52% según tu instrucción
     },
     { 
@@ -311,36 +311,36 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
       top: '75%', left: '55%', width: '35%' 
     }
   ],
-// --- CLASE 10: Escape Room ---
+// --- CLASE 10: Interfaz Digital ---
   "10": [
     { 
       label: 'Aprendamos en comunidad', 
-      description: 'Video tutorial para comprender la lógica de los Escape Rooms y cómo participar activamente en el reto.',
-      url: 'https://www.youtube.com/watch?v=NLM2GjSihNY', 
+      description: 'Video tutorial introductorio sobre la interfaz de Scratch Jr y sus componentes básicos.',
+      url: 'https://www.youtube.com/watch?v=A2dWh9kS27g', 
       top: '30%', left: '5%', width: '35%' 
     },
     { 
       label: 'Gráfico de actividades', 
       description: 'Esquema visual detallado con la ruta de misiones y los pasos necesarios para completar el desafío.',
-      url: 'https://drive.google.com/file/d/1F06EAIht2RXtuO71AZv-AW4xow8wooYL/view?usp=drive_link', 
+      url: 'https://drive.google.com/file/d/1sEfPPY6E9LmcGiyJhwP94t7_yRmlg-DZ/view?usp=sharing', 
       top: '30%', left: '55%', width: '35%' 
     },
     { 
-      label: '¿Por qué es importante el Escape Room en primaria?', 
-      description: 'Artículo académico que analiza los beneficios de la gamificación y el Escape Room en el aprendizaje infantil.',
-      url: 'https://www.redalyc.org/journal/3314/331475280005/331475280005.pdf', 
+      label: '¿Por qué es importante la interfaz en scratch Jr en primaria?', 
+      description: 'Documento explicativo de Cómo la programación por bloques facilita la comprensión de interfaces.',
+      url: 'https://intef.es/wp-content/uploads/2020/11/07_Observatorio_Scratch_Jr_v2.pdf', 
       top: '52%', left: '55%', width: '35%' // Posición al 52% solicitada
     },
     { 
-      label: 'Materiales (App Escape Room)', 
-      description: 'Acceso directo a nuestra aplicación web interactiva para comenzar el desafío del Escape Room.',
-      url: 'https://escaperoom326.web.app/escape-room', 
+      label: 'Materiales Entorno CODE JR', 
+      description: 'Plataforma interactiva para profundizar en el aprendizaje de la programación por bloques',
+      url: 'https://codejr.org/', 
       top: '75%', left: '5%', width: '35%' 
     },
     { 
-      label: 'Materiales (Recursos)', 
-      description: 'Material complementario con ejercicios de lógica y retos de apoyo para fortalecer la resolución de problemas.',
-      url: 'https://www.chicos.net/public/bebras/bebras_argentina_materiales.html', 
+      label: 'Materiales de apoyo (Recursos)', 
+      description: 'Material complementario para profundizar los tipos de animacion que se pueden realizar en scratch jr.',
+      url: 'https://eduteka.icesi.edu.co/articulos/scratchjr-curriculo1', 
       top: '75%', left: '55%', width: '35%' 
     }
   ],
@@ -446,7 +446,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: 'Aprendamos en comunidad', 
       description: 'Video explicativo sobre cómo modelar algoritmos y secuencias utilizando plastilina como herramienta táctil.',
-      url: 'https://www.youtube.com/watch?v=OXF04R5gAm8', 
+      url: 'https://www.youtube.com/watch?v=umtbwsfJl1Q', 
       top: '30%', left: '5%', width: '35%' 
     },
     { 
@@ -582,7 +582,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: '¿Por qué es importante el CuteBot en primaria?', 
       description: 'Documento académico que detalla cómo la robótica móvil con CuteBot potencia el aprendizaje significativo en la escuela.',
-      url: 'https://uvadoc.uva.es/bitstream/handle/10324/70030/TFG-L3920.pdf?sequence=1&isAllowed=y', 
+      url: 'https://www.redalyc.org/journal/274/27466169001/html/', 
       top: '50%', left: '55%', width: '35%' // Posición ajustada al 50%
     },
     { 
@@ -660,7 +660,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: 'Aprendamos en comunidad', 
       description: 'Video explicativo que explora la relación entre los algoritmos y la gestión de las emociones en el bachillerato.',
-      url: '', 
+      url: 'https://www.tiktok.com/@smileandlearnespanol/video/7463125134790921504', 
       top: '37%', left: '5%', width: '35%' 
     },
     { 
@@ -672,7 +672,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: '¿Por qué es importante los algoritmos en bachillerato?', 
       description: 'Repositorio académico que analiza cómo la programación y la lógica influyen en las competencias socioemocionales.',
-      url: 'https://repositorio.unesum.edu.ec/handle/53000/9428', 
+      url: 'https://www.polodelconocimiento.com/ojs/index.php/es/article/view/12078', 
       top: '55%', left: '55%', width: '35%' 
     },
     { 
@@ -793,7 +793,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: 'Aprendamos en comunidad', 
       description: 'Video introductorio sobre el Tangram como herramienta para el desarrollo lógico y el pensamiento computacional.',
-      url: 'https://www.youtube.com/watch?v=XCjMpEnhYg0', 
+      url: 'https://www.youtube.com/watch?v=7jkH1Iwvlk8', 
       top: '30%', left: '5%', width: '35%' 
     },
     { 
@@ -805,7 +805,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: '¿Por qué es importante el razonamiento logico en bachiller?', 
       description: 'Repositorio académico que explica los beneficios del Tangram en el razonamiento geométrico y lógico.',
-      url: 'https://repositorio.unesum.edu.ec/bitstream/53000/4980/1/Pe%c3%b1afiel%20Nieto%20V%c3%adctor%20Alfonso.pdf', 
+      url: 'https://revista.gnerando.org/revista/index.php/RCMG/article/view/1168/1203', 
       top: '52%', left: '58%', width: '35%' 
     },
     { 
@@ -826,7 +826,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: 'Aprendamos en comunidad', 
       description: 'Video introductorio sobre los retos Bebras y cómo aplicar el pensamiento computacional en ellos.',
-      url: 'https://www.youtube.com/watch?v=3oDOAtJK0_s', 
+      url: 'https://www.youtube.com/watch?v=u55tq2Ow540&list=PLBBNHhRRVBKXEPFEdH3lxXEXf9xpWeBRG&index=3', 
       top: '30%', left: '5%', width: '35%' 
     },
     { 
@@ -838,7 +838,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: '¿Por qué son importantes las Guías Bebras?', 
       description: 'Documento académico que analiza el impacto de los retos Bebras en el desarrollo cognitivo y lógico.',
-      url: 'https://revista.eia.edu.co/index.php/reveia/article/download/1833/1641', 
+      url: 'https://dialnet.unirioja.es/servlet/articulo?codigo=9960603', 
       top: '70%', left: '58%', width: '35%' 
     },
     { 
@@ -916,7 +916,7 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: 'Materiales (Code Jr)', 
       description: 'Recursos y guía para iniciarse en la programación por bloques con Code Jr.',
-      url: 'https://codejr.org/scratchjr/index.html', 
+      url: 'https://codejr.org/', 
       top: '75%', left: '5%', width: '35%' 
     },
     { 
@@ -988,13 +988,13 @@ export const BUTTON_MAP: { [classId: string]: OverlayButton[] } = {
     { 
       label: 'Materiales: Entorno Code Jr', 
       description: 'Plataforma interactiva para profundizar en el aprendizaje de la programación por bloques.',
-      url: 'https://codejr.org/scratchjr/index.html', 
+      url: 'https://codejr.org/', 
       top: '75%', left: '5%', width: '35%' 
     },
     { 
       label: 'Editor oficial de Scratch', 
       description: 'Editor en línea de Scratch con tutoriales guiados para empezar a programar proyectos.',
-      url: 'https://scratch.mit.edu/projects/editor/?tutorial=getStarted', 
+      url: 'https://scratch.mit.edu/', 
       top: '75%', left: '58%', width: '35%' 
     }
   ],
